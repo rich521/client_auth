@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "tslint -c tslint.json 'src/**/*.ts'",
-    "build:dev": "npm run test && webpack --config ./webpack.config.js --progress --profile --color --display-error-details --display-cached --bail",
-    "build:prod": "cross-env NODE_ENV=production webpack --config ./webpack.config.js --progress --profile --color --display-error-details --display-cached --bail",
-    "watch": "webpack --config ./webpack.config.js --progress --profile --color --display-error-details --display-cached --bail --watch",
+    "build:dev": "npm run test && webpack --progress --profile --display-error-details --display-cached --bail",
+    "build:prod": "NODE_ENV='production' webpack -p --progress --profile --display-error-details --display-cached --bail",
+    "watch": "webpack --progress --profile --display-error-details --display-cached --bail --w",
     "start": "npm run build:dev && webpack-dev-server --inline --hot"
   },
   "repository": {
@@ -29,6 +29,7 @@
     "react": "16.2.0",
     "react-dom": "16.2.0",
     "react-redux": "5.0.6",
+    "react-router": "4.2.0",
     "redux": "3.7.2",
     "redux-thunk": "2.2.0",
     "source-map-loader": "0.2.3",

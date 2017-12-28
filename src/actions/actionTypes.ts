@@ -1,16 +1,16 @@
 export enum ActionTypes {
-    SetName = 'SET_NAME',
-    SetAge = 'SET_AGE',
+    SET_NAME = 'SET_NAME',
+    SET_AGE = 'SET_AGE',
 };
 
-interface SetName {
-    type: ActionTypes.SetName;
+interface SET_NAME {
+    type: ActionTypes.SET_NAME;
     name: string;
 }
 
-interface SetAge {
-    type: ActionTypes.SetAge;
+interface SET_AGE {
+    type: ActionTypes.SET_AGE;
     age: number;
 }
 
-  export type Actions = SetName | SetAge;
+  export type Actions = SET_NAME | SET_AGE;
