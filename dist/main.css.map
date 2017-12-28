@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/index.less"],"names":[],"mappings":"AAAA;EACI;CACH","file":"main.css","sourcesContent":["body {\n    width: 100%;\n}\n\n// change\n.app_container {\n    @import './less/hello';\n}\n\n\n// WEBPACK FOOTER //\n// ./src/index.less"],"sourceRoot":""}
