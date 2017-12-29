@@ -1,6 +1,6 @@
 import { ActionTypes } from './actionTypes';
 
 export const AppActions = {
-    setName: (name: string) => ({ type: ActionTypes.SET_NAME, name }),
-    setAge: (age: number) => ({ type: ActionTypes.SET_AGE, name }),
+    setEmail: (email: string) => ({ type: ActionTypes.SET_EMAIL, email }),
+    setPassword: (password: string) => ({ type: ActionTypes.SET_PASSWORD, password }),
 };

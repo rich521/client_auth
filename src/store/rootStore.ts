@@ -1,16 +1,16 @@
 
-export interface Hello {
-    name: string;
-    age: number;
+export interface ILogin {
+    email: string;
+    password: string;
 }
 
-export interface RootState {
-  hello: Hello;
+export interface IRootState {
+  login: ILogin;
 }
 
-export const rootState: RootState = {
-    hello: {
-        age: 30,
-        name: 'name',
+export const rootState: IRootState = {
+    login: {
+        email: '',
+        password: '',
     },
 };

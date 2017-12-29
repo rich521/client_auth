@@ -6,8 +6,8 @@
   "scripts": {
     "test": "tslint -c tslint.json 'src/**/*.ts'",
     "build:dev": "npm run test && webpack --progress --profile --display-error-details --display-cached --bail",
-    "build:prod": "NODE_ENV='production' webpack -p --progress --profile --display-error-details --display-cached --bail",
-    "watch": "webpack --progress --profile --display-error-details --display-cached --bail --w",
+    "build:prod": "npm run test && NODE_ENV='production' webpack -p --progress --profile --display-error-details --display-cached --bail",
+    "watch": "npm run test && webpack --progress --profile --display-error-details --display-cached --bail --w",
     "start": "npm run build:dev && webpack-dev-server --inline --hot"
   },
   "repository": {
@@ -20,6 +20,8 @@
     "@types/react": "16.0.31",
     "@types/react-dom": "16.0.3",
     "@types/react-redux": "5.0.14",
+    "@types/react-router": "4.0.20",
+    "@types/react-router-dom": "4.2.3",
     "awesome-typescript-loader": "3.4.1",
     "css-loader": "0.28.7",
     "extract-text-webpack-plugin": "3.0.2",
@@ -30,8 +32,10 @@
     "react-dom": "16.2.0",
     "react-redux": "5.0.6",
     "react-router": "4.2.0",
+    "react-router-dom": "4.2.2",
     "redux": "3.7.2",
     "redux-thunk": "2.2.0",
+    "semantic-ui-react": "0.77.1",
     "source-map-loader": "0.2.3",
     "style-loader": "0.19.1",
     "typescript": "2.6.2",

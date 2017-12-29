@@ -1,16 +1,16 @@
 export enum ActionTypes {
-    SET_NAME = 'SET_NAME',
-    SET_AGE = 'SET_AGE',
-};
-
-interface SET_NAME {
-    type: ActionTypes.SET_NAME;
-    name: string;
+    SET_EMAIL = 'SET_EMAIL',
+    SET_PASSWORD = 'SET_PASSWORD',
 }
 
-interface SET_AGE {
-    type: ActionTypes.SET_AGE;
-    age: number;
+interface ISetEmail {
+    type: ActionTypes.SET_EMAIL;
+    email: string;
 }
 
-  export type Actions = SET_NAME | SET_AGE;
+interface ISetPassword {
+    type: ActionTypes.SET_PASSWORD;
+    password: string;
+}
+
+export type Actions = ISetEmail | ISetPassword;

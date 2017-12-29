@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import { RootState } from '../store/rootStore';
-import { hello } from './hello';
+import { IRootState } from '../store/rootStore';
+import { login } from './login';
 
-const rootReducer = combineReducers<RootState>({
-    hello,
+const rootReducer = combineReducers<IRootState>({
+    login,
 });
 
 export { rootReducer };
