@@ -4,6 +4,7 @@ export enum ActionTypes {
 
     USER_AUTH = 'USER_AUTH',
     USER_UNAUTH = 'USER_UNAUTH',
+    USER_ERROR = 'USER_ERROR',
 }
 
 interface ISetEmail {
@@ -20,4 +21,18 @@ interface IUserAuth {
     type: ActionTypes.USER_AUTH;
 }
 
-export type Actions = ISetEmail | ISetPassword | IUserAuth;
+interface IUserUnauth {
+    type: ActionTypes.USER_UNAUTH;
+}
+
+interface IUserAuthError {
+    type: ActionTypes.USER_ERROR;
+    error: string;
+}
+
+export type Actions = 
+    ISetEmail |
+    ISetPassword |
+    IUserAuth |
+    IUserUnauth |
+    IUserAuthError;

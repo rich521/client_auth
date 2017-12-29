@@ -14,6 +14,7 @@ export const AppActions = {
     setEmail: (email: string) => ({ type: ActionTypes.SET_EMAIL, email }),
     setPassword: (password: string) => ({ type: ActionTypes.SET_PASSWORD, password }),
 
+    userLogout: () => ({ type: ActionTypes.USER_UNAUTH }),
     userLogin: (loginDetails: ILoginDetails, history: History) => {
         return (dispatch: Dispatch<IRootState>) => {
             fetch(`${ROOT_URL}/signin`, {
@@ -23,11 +24,11 @@ export const AppActions = {
             .then((res) => res.json())
             .then((data) => {
                 dispatch({ type: ActionTypes.USER_AUTH });
-                localStorage.setItem('token', data.token);
+                window.localStorage.setItem('token', data.token);
                 history.push('./feature');
             })
             .catch(() => {
-
+                dispatch({ type: ActionTypes.USER_ERROR, error: 'Incorrect login details' });
             });
         };
     },
