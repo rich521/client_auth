@@ -2,12 +2,15 @@ import * as React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Checkbox, Form } from 'semantic-ui-react';
+import { History } from 'history';
 import { IRootState, ILogin } from '../../store/rootStore';
 import { AppActions } from '../../actions/actions';
 interface InjectedProps {
     setEmail: typeof AppActions.setEmail;
     setPassword: typeof AppActions.setPassword;
+    userLogin: typeof AppActions.userLogin;
     login: ILogin;
+    history: History;
 }
 
 type Event = React.SyntheticEvent<HTMLInputElement>;
@@ -18,7 +21,7 @@ class LoginClass extends React.Component<InjectedProps> {
         const { email, password } = this.props.login;
         // TODO validation
         if (email.length < 5 || password.length < 5) return;
-
+        this.props.userLogin({ email, password }, this.props.history);
     }
 
     render() {
@@ -52,4 +55,5 @@ const mapStateToProps = (state: IRootState) => ({
 export const Login = connect(mapStateToProps, {
     setEmail: AppActions.setEmail,
     setPassword: AppActions.setPassword,
+    userLogin: AppActions.userLogin,
 })(LoginClass);

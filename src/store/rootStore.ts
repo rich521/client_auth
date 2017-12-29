@@ -2,6 +2,7 @@
 export interface ILogin {
     email: string;
     password: string;
+    authenticated: boolean;
 }
 
 export interface IRootState {
@@ -12,5 +13,6 @@ export const rootState: IRootState = {
     login: {
         email: '',
         password: '',
+        authenticated: false,
     },
 };
