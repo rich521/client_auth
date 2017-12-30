@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Route } from 'react-router';
 import { Login } from './auth/Login';
 import { Signup } from './auth/Signup';
+import { RequireAuth } from './auth/RequireAuth';
 import { Feature } from './Feature';
-
 // interface InjectedProps {}
 
 export const App: React.SFC = (props) =>
@@ -11,5 +11,5 @@ export const App: React.SFC = (props) =>
         <h1>Title of App</h1>
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/feature" component={Feature} />
+        <Route path="/feature" component={RequireAuth(Feature)} />
     </div>;
