@@ -3,19 +3,27 @@ import { connect } from 'react-redux';
 import { Button } from 'semantic-ui-react';
 import { AppActions } from '../actions/actions';
 import { IRootState } from '../store/rootStore';
-import { History } from 'history';
+import { ROOT_URL } from '../store/constants';
 
 interface InjectedProps {
     userLogout: typeof AppActions.userLogout;
     authenticated: boolean;
-    history: History;
 }
 
 class FeatureClass extends React.Component<InjectedProps> {
+    componentWillMount() {
+        // fetch data
+        fetch(ROOT_URL, {
+            method: 'GET',
+            headers: { authorization: window.localStorage.getItem('token') }
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+    }
+
     onLogout = () => {
         this.props.userLogout();
         window.localStorage.removeItem('token');
-        this.props.history.push('/login');
     }
 
     render() {

@@ -19,7 +19,7 @@ export const RequireAuth = (ComposedComponent: React.ComponentClass| React.State
     componentWillUpdate(nextProps: IAuthHoC) {
       if (!nextProps.login.authenticated) {
         this.props.history.push('/');
-      }
+      } 
     }
 
     render() {

@@ -33,37 +33,35 @@ class SignupClass extends React.Component<InjectedProps> {
 
     render() {
         // console.log(this.props.login);
-        return (
-            <div>
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Input
-                        label="Email"
-                        placeholder="joe@schmoe.com"
-                        onChange={(e: Event) => this.props.setEmail(e.currentTarget.value)}
-                    />
-                    <Form.Input
-                        label="New Password"
-                        type="password"
-                        onChange={(e: Event) => this.props.setPassword(e.currentTarget.value)}
+        return [
+            <Form onSubmit={this.handleSubmit} key="S1">
+                <Form.Input
+                    label="Email"
+                    placeholder="joe@schmoe.com"
+                    onChange={(e: Event) => this.props.setEmail(e.currentTarget.value)}
+                />
+                <Form.Input
+                    label="New Password"
+                    type="password"
+                    onChange={(e: Event) => this.props.setPassword(e.currentTarget.value)}
 
-                    />
-                    <Form.Input
-                        label="Confirm New Password"
-                        type="password"
-                        onChange={(e: Event) => this.props.setPasswordConfirm(e.currentTarget.value)}
+                />
+                <Form.Input
+                    label="Confirm New Password"
+                    type="password"
+                    onChange={(e: Event) => this.props.setPasswordConfirm(e.currentTarget.value)}
 
-                    />
-                    <Form.Field>
-                        <Checkbox label='I agree to the Terms and Conditions' />
-                    </Form.Field>
-                    <Button type='submit'>Signup</Button>
-                </Form>
-                <Message attached='bottom' error hidden={this.props.errorMessage === ''}>
-                    <Icon name='exclamation triangle' />
-                    {this.props.errorMessage}
-                </Message>
-            </div>
-        );
+                />
+                <Form.Field>
+                    <Checkbox label='I agree to the Terms and Conditions' />
+                </Form.Field>
+                <Button type='submit'>Signup</Button>
+            </Form>,
+            <Message attached='bottom' error hidden={this.props.errorMessage === ''} key="S2">
+                <Icon name='exclamation triangle' />
+                {this.props.errorMessage}
+            </Message>
+        ];
     }
 }
 

@@ -26,28 +26,26 @@ class LoginClass extends React.Component<InjectedProps> {
 
     render() {
         console.log(this.props.login);
-        return (
-            <div>
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Input
-                        label="Email"
-                        placeholder="joe@schmoe.com"
-                        onChange={(e: Event) => this.props.setEmail(e.currentTarget.value)}
-                    />
-                    <Form.Input
-                        label="Enter Password"
-                        type="password"
-                        onChange={(e: Event) => this.props.setPassword(e.currentTarget.value)}
+        return [
+            <Form onSubmit={this.handleSubmit} key="L1">
+                <Form.Input
+                    label="Email"
+                    placeholder="joe@schmoe.com"
+                    onChange={(e: Event) => this.props.setEmail(e.currentTarget.value)}
+                />
+                <Form.Input
+                    label="Enter Password"
+                    type="password"
+                    onChange={(e: Event) => this.props.setPassword(e.currentTarget.value)}
 
-                    />
-                    <Button type='submit'>Login</Button>
-                </Form>
-                <Message attached='bottom' error hidden={this.props.errorMessage === ''}>
-                    <Icon name='exclamation triangle' />
-                    {this.props.errorMessage}
-                </Message>
-            </div>
-        );
+                />
+                <Button type='submit'>Login</Button>
+            </Form>,
+            <Message attached='bottom' error hidden={this.props.errorMessage === ''} key="L2">
+                <Icon name='exclamation triangle' />
+                {this.props.errorMessage}
+            </Message>
+        ];
     }
 }
 
