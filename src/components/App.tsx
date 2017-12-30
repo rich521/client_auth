@@ -8,7 +8,6 @@ import { Welcome } from './Welcome';
 // interface InjectedProps {}
 
 export const App: React.SFC = (props): any => {
-    console.log(props);
     return [
         <h1 key="A1">Title of App</h1>,
         <Switch key="A2">

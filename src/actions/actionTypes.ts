@@ -36,7 +36,7 @@ interface IUserAuthError {
     error: string;
 }
 
-export type Actions = 
+export type Actions =
     ISetEmail |
     ISetPassword |
     ISetPasswordConfirm |

@@ -7,4 +7,3 @@ export const paths = {
 
 export const TOKEN = 'token';
 export const ROOT_URL = 'http://localhost:4030';
-

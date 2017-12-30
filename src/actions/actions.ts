@@ -16,7 +16,9 @@ const restService = (method: 'POST', endPoint: PostEndPoint, body: object) => {
         method,
         body: JSON.stringify(body),
     }).then((res) => {
-        if (!res.ok) throw new Error(res.statusText);
+        if (!res.ok) {
+            throw new Error(res.statusText);
+        }
         return res.json();
     });
 };
@@ -45,7 +47,7 @@ export const AppActions = {
         };
     },
     userSignup: (loginDetails: ILoginDetails, history: History) => {
-        return (dispatch: Dispatch<IRootState>) => {
+        return ((dispatch: Dispatch<IRootState>) => {
             restService('POST', 'signup', loginDetails)
             .then((data) => {
                 dispatch({ type: ActionTypes.USER_AUTH });
@@ -55,6 +57,6 @@ export const AppActions = {
             .catch((error: Error) => dispatch({
                 type: ActionTypes.USER_ERROR, error: error.message,
             }));
-        };
+        });
     },
 };
