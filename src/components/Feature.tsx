@@ -23,7 +23,7 @@ class FeatureClass extends React.Component<InjectedProps> {
             <div>
                 <h1>Im the feature page</h1>
                 <Button onClick={this.onLogout}>
-                    Signout
+                    Log out
                 </Button>
             </div>
         );

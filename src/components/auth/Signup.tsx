@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Button, Form, Message, Icon } from 'semantic-ui-react';
+import { Button, Checkbox, Form, Message, Icon } from 'semantic-ui-react';
 import { History } from 'history';
 import { IRootState, ILogin } from '../../store/rootStore';
 import { AppActions } from '../../actions/actions';
 interface InjectedProps {
     setEmail: typeof AppActions.setEmail;
     setPassword: typeof AppActions.setPassword;
-    userLogin: typeof AppActions.userLogin;
+    setPasswordConfirm: typeof AppActions.setPasswordConfirm;
+    userError: typeof AppActions.userError;
+    userSignup: typeof AppActions.userSignup;
     login: ILogin;
     history: History;
     errorMessage: string;
@@ -15,17 +17,22 @@ interface InjectedProps {
 
 type Event = React.SyntheticEvent<HTMLInputElement>;
 
-class LoginClass extends React.Component<InjectedProps> {
-
+class SignupClass extends React.Component<InjectedProps> {
     handleSubmit = (e: React.FormEvent<HTMLInputElement>) => {
-        const { email, password } = this.props.login;
+        const { password, passwordConfirm, email } = this.props.login;
+        console.log(password, passwordConfirm);
+        if (password !== passwordConfirm) {
+            this.props.userError('Passwords do not match');
+            return;
+        }
+
         // TODO validation
         if (email.length < 5 || password.length < 5) return;
-        this.props.userLogin({ email, password }, this.props.history);
+        this.props.userSignup({ email, password }, this.props.history);
     }
 
     render() {
-        console.log(this.props.login);
+        // console.log(this.props.login);
         return (
             <div>
                 <Form onSubmit={this.handleSubmit}>
@@ -35,12 +42,21 @@ class LoginClass extends React.Component<InjectedProps> {
                         onChange={(e: Event) => this.props.setEmail(e.currentTarget.value)}
                     />
                     <Form.Input
-                        label="Enter Password"
+                        label="New Password"
                         type="password"
                         onChange={(e: Event) => this.props.setPassword(e.currentTarget.value)}
 
                     />
-                    <Button type='submit'>Login</Button>
+                    <Form.Input
+                        label="Confirm New Password"
+                        type="password"
+                        onChange={(e: Event) => this.props.setPasswordConfirm(e.currentTarget.value)}
+
+                    />
+                    <Form.Field>
+                        <Checkbox label='I agree to the Terms and Conditions' />
+                    </Form.Field>
+                    <Button type='submit'>Signup</Button>
                 </Form>
                 <Message attached='bottom' error hidden={this.props.errorMessage === ''}>
                     <Icon name='exclamation triangle' />
@@ -56,8 +72,10 @@ const mapStateToProps = (state: IRootState) => ({
     errorMessage: state.login.error,
 });
   
-export const Login = connect(mapStateToProps, {
+export const Signup = connect(mapStateToProps, {
     setEmail: AppActions.setEmail,
     setPassword: AppActions.setPassword,
-    userLogin: AppActions.userLogin,
-})(LoginClass);
+    setPasswordConfirm: AppActions.setPasswordConfirm,
+    userSignup: AppActions.userSignup,
+    userError: AppActions.userError,
+})(SignupClass);

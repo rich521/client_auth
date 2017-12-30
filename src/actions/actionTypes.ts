@@ -1,6 +1,7 @@
 export enum ActionTypes {
     SET_EMAIL = 'SET_EMAIL',
     SET_PASSWORD = 'SET_PASSWORD',
+    SET_PASSWORD_CONFIRM = 'SET_PASSWORD_CONFIRM',
 
     USER_AUTH = 'USER_AUTH',
     USER_UNAUTH = 'USER_UNAUTH',
@@ -15,6 +16,11 @@ interface ISetEmail {
 interface ISetPassword {
     type: ActionTypes.SET_PASSWORD;
     password: string;
+}
+
+interface ISetPasswordConfirm {
+    type: ActionTypes.SET_PASSWORD_CONFIRM;
+    passwordConfirm: string;
 }
 
 interface IUserAuth {
@@ -33,6 +39,7 @@ interface IUserAuthError {
 export type Actions = 
     ISetEmail |
     ISetPassword |
+    ISetPasswordConfirm |
     IUserAuth |
     IUserUnauth |
     IUserAuthError;
