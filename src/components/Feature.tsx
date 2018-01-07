@@ -12,13 +12,13 @@ interface InjectedProps {
 
 class FeatureClass extends React.Component<InjectedProps> {
     componentWillMount() {
-        // fetch data
+        // fetch asset data from mongodb
         fetch(ROOT_URL, {
             method: 'GET',
             headers: { authorization: window.localStorage.getItem('token') }
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => console.log(data));
     }
 
     onLogout = () => {
@@ -27,6 +27,7 @@ class FeatureClass extends React.Component<InjectedProps> {
     }
 
     render() {
+        // top nav, side vav, main view
         return (
             <div>
                 <h1>Im the feature page</h1>
